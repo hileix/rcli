@@ -5,7 +5,7 @@
 ### Install
 
 ```shell
-npm i -g rcli
+npm i -g hileix-rcli
 ```
 
 ### Userage

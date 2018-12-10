@@ -5,7 +5,7 @@
 ### 安装
 
 ```shell
-npm i -g rcli
+npm i -g hileix-rcli
 ```
 
 ### 用法
