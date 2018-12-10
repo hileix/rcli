@@ -18,7 +18,7 @@ cd PROJECT-NAME
 yarn start
 ```
 
-获取你可以使用 `npm`
+或者你可以使用 `npm`
 
 ```shell
 rcli new PROJECT-NAME --use-npm
