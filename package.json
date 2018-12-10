@@ -1,0 +1,29 @@
+{
+  "name": "rcli",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "rcli": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hileix/rcli.git"
+  },
+  "keywords": [],
+  "author": "hileix <304192604@qq.com> (https://github.com/hileix)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hileix/rcli/issues"
+  },
+  "homepage": "https://github.com/hileix/rcli#readme",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "commander": "^2.19.0",
+    "cross-spawn": "^6.0.5",
+    "fs-extra": "^7.0.1"
+  }
+}
