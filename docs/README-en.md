@@ -1,6 +1,6 @@
 ## rcli
 
-[中文文档]() | English Doc
+[中文文档](https://github.com/hileix/rcli/blob/master/docs/README-zh.md) | English Doc
 
 ### Install
 

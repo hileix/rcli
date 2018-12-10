@@ -1,6 +1,6 @@
 ## rcli
 
-中文文档 | [English Doc]()
+中文文档 | [English Doc](https://github.com/hileix/rcli/blob/master/docs/README-en.md)
 
 ### 安装
 
@@ -18,7 +18,7 @@ cd PROJECT-NAME
 yarn start
 ```
 
-or you can use `npm`
+获取你可以使用 `npm`
 
 ```shell
 rcli new PROJECT-NAME --use-npm
