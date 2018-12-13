@@ -9,7 +9,10 @@ const fs = require('fs-extra');
 
 const log = console.log;
 
-program.option('--use-npm').parse(process.argv);
+program
+  .version('0.1.1')
+  .option('--use-npm')
+  .parse(process.argv);
 
 if (program.args[0] === 'new') {
   if (program.args[1]) {
