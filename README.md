@@ -13,10 +13,6 @@ Commands:
   new <appName>
   g <componentName>
 
-options:
--h, --help                         output usage information
--V, --version                      output the version number
-
 `new` command options:
   -n, --use-npm                    Whether to use npm to download dependencies
 
