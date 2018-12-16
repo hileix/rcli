@@ -7,7 +7,7 @@
     "rcli": "./index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,8 @@
     "commander": "^2.19.0",
     "cross-spawn": "^6.0.5",
     "fs-extra": "^7.0.1"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
   }
 }
