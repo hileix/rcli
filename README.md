@@ -10,8 +10,9 @@ npm i -g hileix-rcli
 Usage: rcli [command] [options]
 
 Commands:
-  new <appName>
-  g <componentName>
+  new <appName> [options]
+  g <componentName> [options]
+  config [options]
 
 `new` command options:
   -n, --use-npm                    Whether to use npm to download dependencies
@@ -21,6 +22,9 @@ Commands:
   --no-folder                      Whether the component have not it's own folder
   -p, --pure-component             Whether the component is a extend from PureComponent
   -s, --stateless                  Whether the component is a stateless component
+
+`config` command options:
+  -d, --dir                        Sets the default path for component generation
 ```
 
 ### 用法
@@ -71,6 +75,12 @@ rcli g -c MyNewComponent -s
 rcli g -c MyNewComponent --no-folder
 ```
 
+#### 设置组件生成的默认路径（即将开发）
+
+```shell
+rcli config -d ./src/components
+```
+
 ## changelog
 
 - 0.2.1：修复生成文件内组件时报错的 bug（2018-12-19）
@@ -79,4 +89,4 @@ rcli g -c MyNewComponent --no-folder
 
 ## 下一步计划
 
-- 支持设置组件生成的默认文件夹
+- 设置组件生成的默认路径
