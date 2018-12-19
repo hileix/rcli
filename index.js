@@ -63,18 +63,29 @@ function createReactApp(projectName, isUseNpm) {
 
 /**
  * 创建组件
- * @param {string} componentName 组件名称
+ * @param {string} componentPath 组件路径
  * @param {boolean} hasFolder 是否含有文件夹
  * @param {boolean} isStateless 是否是无状态组件
  * @param {boolean} isPureComponent 是否是纯组件
  */
 function createComponent(
-  componentName,
+  componentPath,
   hasFolder,
   isStateless = false,
   isPureComponent = false
 ) {
-  let dirPath = path.join(process.cwd());
+  const componentName = path.basename(componentPath);
+  let curPath = path.join(process.cwd());
+  let componentDir;
+  if (componentName === componentPath) {
+    componentDir = './';
+  } else {
+    const index = componentPath.indexOf(componentName) - 1;
+    componentDir = componentPath.substring(0, index);
+  }
+
+  let dirPath = path.join(curPath, componentDir);
+
   // 组件在文件夹中
   if (hasFolder) {
     dirPath = path.join(dirPath, componentName);
