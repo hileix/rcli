@@ -6,8 +6,12 @@ const spawn = require('cross-spawn');
 const chalk = require('chalk');
 const path = require('path');
 const fs = require('fs-extra');
+const isRelative = require('is-relative');
+const isAbsolute = require('is-absolute');
+const pathExists = require('path-exists');
 
 const log = console.log;
+const HOME_PATH = process.env.HOME;
 
 // new command
 program
@@ -46,6 +50,21 @@ program
     );
   });
 
+// config command
+program
+  .command('config')
+  .description('Configuration rcli')
+  .option(
+    '-d, --dir <dir>',
+    'The directory in which the generated component resides'
+  )
+  .action(function(cmd) {
+    if (!cmd.dir) {
+      printConfig();
+    }
+    setConfig(cmd.dir);
+  });
+
 program.parse(process.argv);
 
 /**
@@ -74,8 +93,19 @@ function createComponent(
   isStateless = false,
   isPureComponent = false
 ) {
+  /**
+   * 1. 只传组件名称：则相对设置的默认组件生成文件夹路径
+   * 2. 其他，相对当前文件夹路径
+   */
   const componentName = path.basename(componentPath);
+
   let curPath = path.join(process.cwd());
+
+  // 只传了组件名称：如 Aaa（非 ./Aaa、./src/Aaa 等路径）
+  if (componentName === componentPath) {
+    curPath = getDefaultComponentDir();
+  }
+
   let componentDir;
   if (componentName === componentPath) {
     componentDir = './';
@@ -212,4 +242,44 @@ function getIndexJs(componentName) {
   return `import ${componentName} from './${componentName}';
 export default ${componentName};
 `;
+}
+
+/**
+ * 设置配置
+ * @param {string} dir 生成的组件所在的目录
+ */
+function setConfig(dir) {
+  if (isRelative(dir)) {
+    dir = path.join(process.cwd(), dir);
+  } else if (!isAbsolute(dir)) {
+    log(chalk.red('dir is invalidate folder path'));
+    process.exit(1);
+  }
+  fs.writeFileSync(`${HOME_PATH}/.rcliconfig`, `dir=${dir}`);
+  log(chalk.green('Configuration is successful!'));
+}
+
+/**
+ * 获取默认的组件生成所在的文件夹
+ */
+function getDefaultComponentDir() {
+  let config = '';
+  if (pathExists.sync(`${HOME_PATH}/.rcliconfig`)) {
+    config = fs.readFileSync(`${HOME_PATH}/.rcliconfig`, {
+      encoding: 'utf8'
+    });
+  }
+  let defaultComponentDir = process.cwd();
+  if (config) {
+    defaultComponentDir = config.split('=')[1];
+  }
+  return defaultComponentDir;
+}
+
+/**
+ * 打印配置
+ */
+function printConfig() {
+  log(getDefaultComponentDir());
+  process.exit(1);
 }
