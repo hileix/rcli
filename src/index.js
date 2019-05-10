@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 'use strict';
 const inquirer = require('inquirer');
 const { createComponent } = require('./util');
@@ -28,7 +30,7 @@ const questions = [
       },
       {
         name: '函数组件'
-      },
+      }
       // {
       //   name: 'Hooks'
       // }

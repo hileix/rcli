@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 'use strict';
 const program = require('commander');
 const spawn = require('cross-spawn');
