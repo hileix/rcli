@@ -283,3 +283,7 @@ function printConfig() {
   log(getDefaultComponentDir());
   process.exit(1);
 }
+
+module.exports = {
+  createComponent
+};

@@ -1,6 +1,6 @@
 ## rcli
 
-中文文档 | [English Doc](https://github.com/hileix/rcli/blob/master/docs/README-en.md)
+`rcli` 通过命令行的交互方式，通过输入 `组件名` 和选择 `组件类型`，来生成 `react` 组件。
 
 ### 安装
 
@@ -8,71 +8,12 @@
 npm i -g hileix-rcli
 ```
 
-```
-Usage: rcli [command] [options]
-
-Commands:
-  new <appName>
-  g <componentName>
-
-options:
--h, --help                         output usage information
--V, --version                      output the version number
-
-`new` command options:
-  -n, --use-npm                    Whether to use npm to download dependencies
-
-`g` command options:
-  -c, --component <componentName>  The name of the component
-  --no-folder                      Whether the component have not it's own folder
-  -p, --pure-component             Whether the component is a extend from PureComponent
-  -s, --stateless                  Whether the component is a stateless component
-```
-
-### 用法
-
-#### 使用 [`create-react-app`](https://github.com/facebook/create-react-app) 来创建一个应用
+### 使用
 
 ```shell
-rcli new PROJECT-NAME
-cd PROJECT-NAME
-yarn start
+rcli
 ```
 
-或者你可以使用 `npm` 安装依赖
+## changelog
 
-```shell
-rcli new PROJECT-NAME --use-npm
-cd PROJECT-NAME
-npm start
-```
-
-#### 生成纯组件（继承自 PureComponent，以提高性能）
-
-```shell
-rcli g -c MyNewComponent -p
-```
-
-#### 生成类组件（有状态组件）
-
-```shell
-rcli g -c MyNewComponent
-```
-
-等于：
-
-```shell
-rcli g -c ./MyNewComponent
-```
-
-#### 生成函数组件（无状态组件）
-
-```shell
-rcli g -c MyNewComponent -s
-```
-
-#### 生成组件不在文件夹内（也不包含 css 文件和 index.js 文件）
-
-```shell
-rcli g -c MyNewComponent --no-folder
-```
+- 1.0.0：可在当前目录生成 `类组件` 和 `函数组件`。
